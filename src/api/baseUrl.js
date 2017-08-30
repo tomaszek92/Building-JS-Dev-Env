@@ -1,4 +1,10 @@
 export default function getBaseUrl() {
-   const inDevelopement = window.location.hostname === "localhost";
-   return inDevelopement ? "http://localhost:3001" : "";
+   return getQueryStringParameterByName("userMockApi") ? "http://localhost:3001" : "";
+}
+
+function getQueryStringParameterByName(name) {
+   name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+       results = regex.exec(location.search);
+   return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }

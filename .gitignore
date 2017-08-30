@@ -58,3 +58,4 @@ typings/
 .env
 
 src/api/db.json
+dist/
